@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html ng-app="usuarios"> <!-- especificando qual modulo estou usando -->
+
+<head>
+
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+	
+	<title>Cadastro de usuarios</title>
+	
+</head>
+<body>
+
+<!-- O atributo NG-CONTROLLER será responsável por informar ao Angular para criar um novo CRTLusuario e todas as variáveis públicas do controller estarão disponíveis para as outras tags dentro desta div -->
+	<div ng-controller="UsuariosController as controller">
+		<form name="meuFormulario" class="form-horizontal" ng-submit="controller.salvarUsuario(controller.usuario)">
+			<div class="col-sm-5 col-sm-offset-3">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h2>Cadastro de usuario</h2>
+					</div>
+					<div class="panel-body">
+	                  	<div class="form-group row"  style="margin-left: 18px;">          			        
+	                    	<div class="col-xs-5 col-md-5" ng-class="{'has-error': meuFormulario.nome.$invalid && meuFormulario.nome.$dirty,
+							                                          'has-success': meuFormulario.nome.$valid && meuFormulario.nome.$dirty}">
+	                       	
+	                       		<label for="example-text-input" class="col-2 col-form-label">Nome:</label>
+	                       	
+	                           	<input class="form-control" type="text" name="nome" id="nome" placeholder="Nome:" ng-model="controller.usuario.nome" required>
+	                           	
+	                           	<div ng-messages="meuFormulario.nome.$error" class="help-block" ng-if="meuFormulario.nome.$dirty">
+									<div ng-message="required">Campo nome deve ser informado</div>
+								</div>
+	                       	</div>
+	                       	<div class="col-xs-5 col-md-5" ng-class="{'has-error': meuFormulario.sobrenome.$invalid && meuFormulario.sobrenome.$dirty,
+							                						  'has-success': meuFormulario.sobrenome.$valid && meuFormulario.sobrenome.$dirty}">
+							     
+	                           	<label for="example-text-input" class="col-2 col-form-label">Sobrenome:</label>
+	                           	
+	                           	<input class="form-control" type="text" id="sobrenome" name="sobrenome" placeholder="SobreNome" ng-model="controller.usuario.sobrenome" required>
+	                           	
+	                           	<div ng-messages="meuFormulario.sobrenome.$error" class="help-block" ng-if="meuFormulario.nome.$dirty">
+									<div ng-message="required">Campo sobrenome deve ser informado</div>
+								</div>             	
+							</div> 
+	                    </div> 
+	                    <div class="form-group row" style="margin-left: 18px;">
+	                        <div class="col-xs-5 col-md-5" ng-class="{'has-error': meuFormulario.email.$invalid && meuFormulario.email.$dirty,
+									                                  'has-success': meuFormulario.email.$valid && meuFormulario.email.$dirty}">
+	                        
+	                            <label for="example-text-input" class="col-2 col-form-label">Email:</label>
+	                            
+	                            <input class="form-control" type="text" id="email" placeholder="Email:" name="email" ng-model="controller.usuario.email" required>
+	                            		
+	                          		<div ng-messages="meuFormulario.email.$error" class="help-block" ng-if="meuFormulario.email.$dirty">
+									<div ng-message="required">Campo email deve ser informado</div>								
+								</div>	                            
+	                        </div>
+	                        <div class="col-xs-5 col-md-5" ng-class="{'has-error': meuFormulario.telefone.$invalid && meuFormulario.telefone.$dirty,
+									                                  'has-success': meuFormulario.telefone.$valid && meuFormulario.telefone.$dirty}">
+									                       
+	                            <label for="example-text-input" class="col-2 col-form-label">Telefone:</label>
+	                            
+	                            <input class="form-control" type="number" id="telefone" placeholder="Telefone:" name="telefone" ng-model="controller.usuario.telefone" required>
+	                            
+	                        	<div ng-messages="meuFormulario.telefone.$error" class="help-block" ng-if="meuFormulario.telefone.$dirty">
+									<div ng-message="required">Campo telefone deve ser informado</div>								
+								</div>	
+	                        </div>  
+	                    </div>
+		                     
+		                <div class="form-group row" style="margin-left: 18px;">
+	                        <div class="col-xs-5 col-md-5" ng-class="{'has-error': meuFormulario.estado.$invalid && meuFormulario.estado.$dirty,
+									                                  'has-success': meuFormulario.estado.$valid && meuFormulario.estado.$dirty}">
+									                                   
+	                            <label for="example-text-input" class="col-2 col-form-label">Estado:</label>
+	                            
+	                            <input class="form-control" type="text" id="estado" name="estado" placeholder="Estado:" ng-model="controller.usuario.estado" required>
+	                            
+	                            <div ng-messages="meuFormulario.estado.$error" class="help-block" ng-if="meuFormulario.estado.$dirty">
+									<div ng-message="required">Campo estado deve ser informado</div>								
+								</div>	
+	                        </div>
+	                         <div class="col-xs-5 col-md-5 " ng-class="{'has-error': meuFormulario.cidade.$invalid && meuFormulario.cidade.$dirty,
+									                                    'has-success': meuFormulario.cidade.$valid && meuFormulario.cidade.$dirty}">
+	                         
+	                            <label for="example-text-input" class="col-2 col-form-label">Cidade:</label>
+	                            
+	                            <input class="form-control" type="text" id="cidade" placeholder="Cidade:" name="cidade" ng-model="controller.usuario.cidade" required>
+	                            
+	                            <div ng-messages="meuFormulario.cidade.$error" class="help-block" ng-if="meuFormulario.cidade.$dirty">
+									<div ng-message="required">Campo Cidade deve ser informado</div>								
+								</div>	
+	                        </div>  
+		                </div>
+		                     
+		                <div class="form-group row" style="margin-left: 18px;">
+	                        <div class="col-xs-5 col-md-5" ng-class="{'has-error': meuFormulario.bairro.$invalid && meuFormulario.bairro.$dirty,
+									                                  'has-success': meuFormulario.bairro.$valid && meuFormulario.bairro.$dirty}">
+									                                  
+	                            <label for="example-text-input" class="col-2 col-form-label">Bairro:</label>
+	                            
+	                            <input class="form-control" type="text" id="bairro" placeholder="Bairro:" name="bairro" ng-model="controller.usuario.bairro" required>
+	                            
+	                            <div ng-messages="meuFormulario.bairro.$error" class="help-block" ng-if="meuFormulario.bairro.$dirty">
+									<div ng-message="required">Campo Bairro deve ser informado</div>								
+								</div>	
+	                        </div>
+	                         <div class="col-xs-5 col-md-5 " ng-class="{'has-error': meuFormulario.rua.$invalid && meuFormulario.rua.$dirty,
+									                                    'has-success': meuFormulario.ura.$valid && meuFormulario.rua.$dirty}">
+									                                    
+	                            <label for="example-text-input" class="col-2 col-form-label">Rua:</label>
+	                            
+	                            <input class="form-control" type="text" id="rua" placeholder="Rua:" name="rua" ng-model="controller.usuario.rua" required>
+	                            
+	                            <div ng-messages="meuFormulario.rua.$error" class="help-block" ng-if="meuFormulario.rua.$dirty">
+									<div ng-message="required">Campo Rua deve ser informado</div>								
+								</div>	
+	                        </div>  
+		                </div>
+	              	</div>	
+	            </div>
+				<div class="panel-footer text-right">
+				 	<button type="submit" class="btn btn-primary" ng-disabled="meuFormulario.$invalid">Salvar</button>
+				 	<button type="button" class="btn btn-default" ng-click="controller.novoUsuario()">Cancelar</button>
+				</div>
+			</div>
+		</form>
+		
+		<div class="container" >
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-5">
+					<div class="input-group">
+						<input class="form-control" ng-model="controller.pesquisa">
+						<div class="input-group-btn">
+							<button type="button" class="btn btn-default" ng-click="controller.pesquisar();">Pesquisar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="table-responsive col-sm-12">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Sobrenome</th>
+						<th>email</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="usuario in controller.usuarios | filter: controller.pesquisa">  
+						<td>{{usuario.nome | uppercase}}</td>
+						<td>{{usuario.sobrenome | uppercase }}</td>
+						<td>{{usuario.email}}</td>
+						<td>
+							<button type="button" class="btn btn-warning" ng-click="controller.selecionarUsuario(usuario)">Editar</button>
+							<button type="button" class="btn btn-danger" ng-click="controller.removerUsuario(usuario)">Remover</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+	<script type="text/javascript" src="node_modules/angular-messages/angular-messages.min.js"></script>
+	
+	<script type="text/javascript" src="js/config/app.js"></script>
+	<script type="text/javascript" src="js/filter/capitalize-filter.js"></script>
+	<script type="text/javascript" src="js/directive/json.directive.js"></script>
+	
+	<script type="text/javascript" src="js/tarefa/tarefa-controller.js"></script>
+</body>
+</html>
